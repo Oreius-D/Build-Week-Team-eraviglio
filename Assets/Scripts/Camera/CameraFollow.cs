@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.5f;
 
     //attivare i limiti della mappa e settarli
+    //checkbox nell inspector
     public bool enableBoundaries = true;
     public float minX = 0f;
     public float maxX = 0f;
@@ -22,6 +23,7 @@ public class CameraFollow : MonoBehaviour
     //chiedere a Paolo i limiti della mappa per settarli.
    
     // Start is called before the first frame update
+    //cerca il Player , gameobj con tag Player
     void Start()
     {
         if (player == null)
@@ -36,6 +38,14 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
+        //se il player muore la cam fa zoomout
+        if (player == null)
+        { Vector3 zoomOutPosition = transform.position + new Vector3(0, 0, -5);
+         transform.position = Vector3.Lerp(transform.position , zoomOutPosition , Time.deltaTime);
+
+         return;
+        }
+
         Vector3 desiredPosition = player.position + offset;
 
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
