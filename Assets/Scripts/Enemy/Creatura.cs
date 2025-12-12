@@ -22,7 +22,7 @@ public abstract class Creatura : MonoBehaviour
         if (currentHP <= 0)
         {
             currentHP = 0;
-            Debug.Log($"{gameObject} e` morto!");
+            Debug.Log($"{gameObject.name} e` morto!");
             Destroy(gameObject);
         }
     }

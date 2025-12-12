@@ -9,11 +9,14 @@ public abstract class Enemy : Creatura
     [SerializeField] protected float attackRange = 1f;
     [SerializeField] protected float attackCooldown = 1f;
     [SerializeField] protected float detectionRange = 1f;
-    
+    protected float lastAttack;
+
+    protected Transform player;
 
     protected override void Awake()
     {
         base.Awake();
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
     protected virtual void Update() 
     {
@@ -23,15 +26,26 @@ public abstract class Enemy : Creatura
     }
     protected abstract void MovementBehavior();
 
-    /*protected bool IsPlayerDetected(float range)
+    protected bool IsPlayerDetected(float range)
     {
-        float distance = (Enemy.position - player.position).magnitude;
-        if ()
-    }*/
+        float distance = (transform.position - player.position).magnitude;
+        if (distance < range) return true;
+        else
+        {
+            return false;
+        }
+        
+    }
 
     public override void Attack(Creatura Target)
     {
+        if (Time.time >= lastAttack + attackCooldown)
+        {
+            Target.Takedamage(damage);
+            lastAttack = Time.time;
+            Debug.Log($"{gameObject.name} attacca!");
         
+        }
     }
 
     public float GetMoveSpeed () => moveSpeed;
@@ -40,4 +54,6 @@ public abstract class Enemy : Creatura
     public void SetAttackRange (float value) => attackRange = value;
     public float GetAttackCooldown () => attackCooldown;
     public void SetAttackCooldown (float value) => attackCooldown = value;
+    public float GetDetectionRange () => detectionRange;
+    public void SetDetectionRange(float value) => detectionRange = value;
 }
