@@ -109456,8 +109456,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 390323245
-  m_SortingLayer: 2
+  m_SortingLayerID: -1688726417
+  m_SortingLayer: 4
   m_SortingOrder: 100
   m_Sprite: {fileID: 978012912, guid: 99a24620d31e5ce4e823c32d11e17c2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113324,6 +113324,7 @@ GameObject:
   - component: {fileID: 1567771529}
   - component: {fileID: 1567771528}
   - component: {fileID: 1567771531}
+  - component: {fileID: 1567771532}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -113449,6 +113450,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1567771532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567771527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88613caaabfb76b40a2543ac58e8ff83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1446375931}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
